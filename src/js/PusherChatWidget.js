@@ -15,10 +15,10 @@ function PusherChatWidget(pusher, options) {
   options = options || {};
   this.settings = $.extend({
     maxItems: 50, // max items to show in the UI. Items beyond this limit will be removed as new ones come in.
-    chatEndPoint: 'php/chat.php', // the end point where chat messages should be sanitized and then triggered
-    channelName: document.location.href, // the name of the channel the chat will take place on
     appendTo: document.body, // A jQuery selector or object. Defines where the element should be appended to
-    debug: true
+    debug: true,
+    appendTo: "#pusher_chat_widget",
+    chatEndPoint: "/chat"
   }, options);
   
   if(this.settings.debug && !Pusher.log) {
@@ -180,7 +180,6 @@ PusherChatWidget._createHTML = function(appendTo) {
       '<button class="pusher-chat-widget-send-btn">Send</button>' +
     '</div>' +
     '<div class="pusher-chat-widget-footer">' +
-      '<a href="http://pusher.com">Pusher</a> powered realtime chat' +
     '</div>' +
   '</div>';
   var widget = $(html);

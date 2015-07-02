@@ -2,12 +2,27 @@
 <html lang="en-us">
   <head>
     <meta charset="utf-8">
-    <title>Realtime Chat Widget using Pusher - Frameset</title>
+    <title>Any page</title>
+
+    <link rel="stylesheet/less" type="text/css" href="lib/twitter-bootstrap/lib/bootstrap.less">
+    <script src="lib/less/less-1.1.5.min.js"></script>
+
+    <link href="styles.css" rel="stylesheet" />
+    <link href="pusher-chat-widget.css" rel="stylesheet" />
+
+		<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="http://js.pusher.com/3.0/pusher.min.js"></script>
+    <script src="js/ChatStarter.js"></script>
+    <script>
+      $(function() {
+        var pusher = new Pusher("b966f1c39c115839efbb");
+        var starter = new ChatStarter(pusher);
+      });
+    </script>
   </head>
-  
-  <frameset cols="50%,50%">
-     <frame src="chat.html" />
-     <frame src="chat.html" />
-  </frameset>
+
+  <body>
+
+  </body>
 
 </html>

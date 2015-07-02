@@ -8,6 +8,7 @@ require_relative 'config'
 include Rack::Utils
 
 set :public_folder, '../'
+set :port, ARGV[0]
 
 get '/' do
   File.read('../index.html')
@@ -33,8 +34,12 @@ post '/chat' do
 
   activity = Activity.new('chat-message', options['text'], options)
 
+  p "****activity: #{activity.inspect}"
+
   data = activity.getMessage()
   response = Pusher[channel_name].trigger('chat_message', data)
+
+  p "****response: #{response.inspect}"
 
   result = {'activity' => data, 'pusherResponse' => response}
 
@@ -47,9 +52,10 @@ post '/chat' do
 end
 
 def get_channel_name(http_referer)
-  pattern = /(\W)+/
-  channel_name = http_referer.gsub pattern, '-'
-  return channel_name
+  # pattern = /(\W)+/
+  # channel_name = http_referer.gsub pattern, '-'
+  # return channel_name
+  "chat-101-102"
 end
 
 def sanitise_input(chat_info)
